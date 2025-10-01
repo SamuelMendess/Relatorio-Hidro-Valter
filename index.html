@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Performance - Junho a Setembro</title>
+    <!-- Carregando Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carregando Chart.js CDN para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <!-- Configuração da fonte Inter e Cores Personalizadas (Baseado na ID Visual da Hidro Fiber) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'hf-primary': '#013220', // Verde Escuro Profundo
+                        'hf-accent': '#00C853',  // Verde Vibrante (Cor de Ação/Destaque do site)
+                        'hf-text': '#212529' // Cor de texto quase preto
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa; /* Light background */
+        }
+        .card-shadow { box-shadow: 0 10px 15px -3px rgba(33, 37, 41, 0.05), 0 4px 6px -2px rgba(33, 37, 41, 0.02); }
+        /* Estilo para a tabela responsiva */
+        @media (max-width: 768px) {
+            .responsive-table table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Cabeçalho Fixo com Logo (Novo) -->
+    <div class="bg-hf-primary py-4 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <!-- Espaço do Logotipo -->
+            <img 
+                src="https://hidrofiberdobrasil.com.br/wp-content/uploads/2022/06/Logo-2-Variacao-Branca-1536x616.png" 
+                alt="Hidro Fiber do Brasil Logo" 
+                onerror="this.onerror=null; this.src='https://placehold.co/150x60/013220/ffffff?text=HIDRO+FIBER';"
+                class="h-10 sm:h-12"
+            >
+            <h2 class="text-xl font-bold text-white hidden sm:block">Relatório de Performance</h2>
+        </div>
+    </div>
+
+    <div class="min-h-screen pb-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Título Principal (Ajustado) -->
+            <header class="text-center my-12">
+                <h1 class="text-4xl font-extrabold text-hf-primary mb-1">Campanhas de Tráfego Pago</h1>
+                <h2 class="text-2xl font-semibold text-hf-text"><strong>Hidro Fiber do Brasil</strong> | Análise de Desempenho</h2>
+                <p class="text-lg text-gray-500 mt-2">Período: <strong>Junho a Setembro</strong> de 2025</p>
+            </header>
+
+            <!-- Sumário Executivo -->
+            <section class="mb-16 p-8 bg-white rounded-xl card-shadow border-t-4 border-hf-primary">
+                <h3 class="text-3xl font-bold text-hf-text mb-6 flex items-center">
+                    <span class="mr-3 text-4xl text-hf-accent">🚀</span> Sumário Executivo: Sucesso na Conversão
+                </h3>
+                <p class="text-lg text-gray-700 leading-relaxed">
+                    A análise do período demonstra um sucesso inequívoco na otimização das campanhas focadas na <strong>conversão via WhatsApp</strong>. A estratégia não só aumentou o volume de <strong>leads qualificados</strong>, mas também elevou a <strong>eficiência do investimento</strong>. Conseguimos <strong>quase dobrar</strong> o número de <strong>conversas iniciadas</strong>, enquanto <strong>reduzimos significativamente o Custo por Conversa (CPL)</strong>. Os dados comprovam a <strong>solidez do funil de aquisição</strong> de clientes de <strong>SPA de Hidromassagem, Banheiras e Ofurô/Saunas</strong>.
+                </p>
+            </section>
+
+            <!-- Cartões de Destaque -->
+            <div class="grid md:grid-cols-2 gap-8 mb-16">
+
+                <!-- Destaque 1: Conversas Iniciadas -->
+                <div class="p-8 bg-white rounded-xl card-shadow border-b-4 border-hf-accent transition duration-300 hover:scale-[1.02]">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-6xl font-extrabold text-hf-accent">95,4%</span>
+                        <span class="text-5xl text-hf-accent">💬</span>
+                    </div>
+                    <h4 class="text-xl font-semibold text-hf-text mb-2"><strong>Crescimento nas Conversas Iniciadas</strong></h4>
+                    <p class="text-gray-600">
+                        O volume de <strong>leads qualificados</strong> via WhatsApp saltou de <strong>1.109 em Junho</strong> para <strong>2.167 em Setembro</strong>, validando a <strong>eficácia dos criativos e segmentações</strong>.
+                    </p>
+                </div>
+
+                <!-- Destaque 2: Custo por Conversa (CPL) -->
+                <div class="p-8 bg-white rounded-xl card-shadow border-b-4 border-hf-primary transition duration-300 hover:scale-[1.02]">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-6xl font-extrabold text-hf-primary">33,5%</span>
+                        <span class="text-5xl text-hf-primary">💸</span>
+                    </div>
+                    <h4 class="text-xl font-semibold text-hf-text mb-2"><strong>Redução do Custo por Conversa (CPL)</strong></h4>
+                    <p class="text-gray-600">
+                        O custo por lead caiu de <strong>R$ 4,07 para R$ 2,71</strong>, o que demonstra uma <strong>otimização massiva</strong> e aumento do <strong>Retorno sobre o Investimento (ROI)</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Gráfico 1: Conversas Iniciadas (Barra) -->
+            <section class="mb-16 p-8 bg-white rounded-xl card-shadow">
+                <h3 class="text-2xl font-bold text-hf-text mb-6 border-b pb-2 border-hf-accent">Gráfico 1: Evolução das <strong>Conversas Iniciadas</strong> (Leads)</h3>
+                <canvas id="chartConversas" class="max-w-full"></canvas>
+            </section>
+
+
+            <!-- Tabela de Conversão e Eficiência -->
+            <section class="mb-16">
+                <h3 class="text-2xl font-bold text-hf-text mb-6 border-b pb-2 border-hf-primary">Tabela 1: Evolução da Conversão e Custo (<strong>Jun - Set</strong>)</h3>
+                <div class="overflow-x-auto rounded-xl card-shadow responsive-table">
+                    <table class="min-w-full bg-white divide-y divide-gray-200">
+                        <thead class="bg-hf-primary text-white">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider rounded-tl-xl">Métrica</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"><strong>Junho</strong></th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"><strong>Julho</strong></th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"><strong>Agosto</strong></th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider rounded-tr-xl"><strong>Setembro</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <!-- Conversas Iniciadas -->
+                            <tr class="hover:bg-hf-accent/10">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-hf-text bg-hf-accent/20"><strong>Conversas Iniciadas</strong> (WhatsApp)</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-extrabold text-hf-accent">1.109</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-extrabold text-hf-accent">1.810</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-extrabold text-hf-accent">2.604</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-extrabold text-hf-accent">2.167</td>
+                            </tr>
+                            <!-- Custo por Conversa -->
+                            <tr class="hover:bg-hf-accent/10">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-hf-text bg-hf-accent/20"><strong>Custo por Conversa (CPL)</strong></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-hf-text">R$ 4,07</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-hf-text">R$ 2,58</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-hf-text">R$ 2,40</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-hf-text">R$ 2,71</td>
+                            </tr>
+                            <!-- Investimento Total -->
+                            <tr class="hover:bg-hf-primary/10">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-hf-text">Investimento Total</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-hf-text">R$ 4.516,74</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-hf-text">R$ 4.663,74</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-hf-text">R$ 6.096,75</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-hf-text">R$ 5.820,08</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <!-- Gráfico 2: Otimização de Custo (Linha/Barra) -->
+            <section class="mb-16 p-8 bg-white rounded-xl card-shadow">
+                <h3 class="text-2xl font-bold text-hf-text mb-6 border-b pb-2 border-hf-primary">Gráfico 2: Otimização do <strong>Custo por Conversa (CPL)</strong> vs. Investimento</h3>
+                <canvas id="chartCustos" class="max-w-full"></canvas>
+            </section>
+
+            <!-- Tabela de Métricas Detalhadas -->
+            <section class="mb-16">
+                <h3 class="text-2xl font-bold text-hf-text mb-6 border-b pb-2 border-hf-primary">Tabela 2: Detalhes da Performance (<strong>Jun - Set</strong>)</h3>
+                <div class="overflow-x-auto rounded-xl card-shadow responsive-table">
+                    <table class="min-w-full bg-white divide-y divide-gray-200">
+                        <thead class="bg-hf-primary text-white">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider rounded-tl-xl">Métrica</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"><strong>Junho</strong></th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"><strong>Julho</strong></th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"><strong>Agosto</strong></th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider rounded-tr-xl"><strong>Setembro</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100">
+                            <tr><td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-hf-text"><strong>Alcance</strong></td><td class="px-6 py-4 whitespace-nowrap text-sm text-hf-text">77.734</td><td class="px-6 py-4 whitespace-nowrap text-sm text-hf-text">108.997</td><td class="px-6 py-4 whitespace-nowrap text-sm text-hf-text">152.500</td><td class="px-6 py-4 whitespace-nowrap text-sm text-hf-text">155.048</td></tr>
+                            <tr><td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-hf-text"><strong>Impressões</strong></td><td class="px-6 py-4 whitespace-nowrap text-sm text-hf-text">164.666</td><td class="px-6 py-4 whitespace-nowrap text-sm text-hf-text">240.653</td><td class="px-6 py-4 whitespace-nowrap text-sm text-hf-text">315.256</td><td class="px-6 py-4 whitespace-nowrap text-sm text-hf-text">335.048</td></tr>
+                            <tr><td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-hf-text"><strong>Cliques (todos)</strong></td><td class="px-6 py-4 whitespace-nowrap text-sm text-hf-text">6.484</td><td class="px-6 py-4 whitespace-nowrap text-sm text-hf-text">9.177</td><td class="px-6 py-4 whitespace-nowrap text-sm text-hf-text">10.593</td><td class="px-6 py-4 whitespace-nowrap text-sm text-hf-text">10.075</td></tr>
+                            <tr><td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-hf-text"><strong>CPC (Custo por Clique)</strong></td><td class="px-6 py-4 whitespace-nowrap text-sm text-hf-text">R$ 0,69</td><td class="px-6 py-4 whitespace-nowrap text-sm text-hf-text">R$ 0,51</td><td class="px-6 py-4 whitespace-nowrap text-sm text-hf-text">R$ 0,58</td><td class="px-6 py-4 whitespace-nowrap text-sm text-hf-text">R$ 0,58</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Nova Seção: Análise de Mercado e Conversão em Vendas -->
+            <section class="mb-16 p-8 bg-white rounded-xl card-shadow border-t-4 border-hf-accent">
+                <h3 class="text-3xl font-bold text-hf-text mb-6 flex items-center">
+                    <span class="mr-3 text-4xl text-hf-accent">📈</span> Análise de Mercado e Potencial de Escalabilidade
+                </h3>
+                <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                    Com os produtos da <strong>Hidro Fiber do Brasil</strong> (<strong>SPA de Hidromassagem, Banheiras e Ofurô/Saunas</strong>) inseridos no mercado de alto valor (<strong>High-Ticket</strong>), o <strong>sucesso das campanhas</strong> está diretamente ligado à <strong>qualidade dos leads</strong> e à eficiência do <strong>time comercial</strong>. As <strong>conversas iniciadas</strong> representam o <strong>topo e meio do funil (TOFU/MOFU)</strong>; o próximo passo crítico é a medição do <strong>fundo de funil (BOFU)</strong>.
+                </p>
+                <div class="p-6 bg-hf-primary/10 rounded-lg">
+                    <p class="text-xl font-bold text-hf-primary mb-3">O Fator Chave para Escalar: Conversão em Vendas</p>
+                    <p class="text-gray-700">Para traçar uma estratégia de <strong>escalabilidade robusta</strong>, é fundamental obter a métrica de <strong>Taxa de Conversão em Vendas</strong> (Conversas em WhatsApp $\rightarrow$ Vendas Fechadas). Assumindo um ticket médio elevado para os produtos, cada venda tem um impacto significativo no <strong>ROI</strong>.</p>
+                    <p class="mt-3 text-gray-700 font-bold">
+                        A <strong>proposta de escalabilidade</strong> depende do cálculo do <strong>Custo por Aquisição (CPA)</strong> e do <strong>Valor de Vida do Cliente (LTV)</strong>, que só são possíveis com a integração dos dados de vendas ao relatório de tráfego.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Conclusão e Próximos Passos -->
+            <section class="p-8 bg-hf-primary rounded-xl text-white">
+                <h3 class="text-3xl font-bold mb-6 flex items-center">
+                    <span class="mr-3 text-4xl text-hf-accent">🎯</span> Próximos Passos Estratégicos: Do Lead à Venda
+                </h3>
+                <ul class="space-y-4 text-lg">
+                    <li class="flex items-start">
+                        <span class="mr-3 mt-1 text-hf-accent font-extrabold text-xl">✓</span>
+                        <div><strong>Análise Conjunta:</strong> Foco na análise da <strong>qualidade do lead</strong> em colaboração com o time comercial para correlacionar o <strong>volume de conversas</strong> com a <strong>taxa de fechamento de vendas</strong>.</div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-3 mt-1 text-hf-accent font-extrabold text-xl">✓</span>
+                        <div><strong>Cálculo de CPA e LTV:</strong> Fornecer dados de vendas para calcular o <strong>Custo por Aquisição (CPA)</strong> real e o <strong>Valor de Vida do Cliente (LTV)</strong>. Se o CPA for rentável, a <strong>escalabilidade</strong> é a próxima etapa imediata.</div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-3 mt-1 text-hf-accent font-extrabold text-xl">✓</span>
+                        <div><strong>Otimização Contínua:</strong> Manter o <strong>Custo por Conversa (CPL)</strong> abaixo da meta de R$ 3,00 e continuar com <strong>testes A/B</strong> de criativos para garantir a sustentabilidade do crescimento.</div>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Footer -->
+            <footer class="text-center mt-12 text-gray-500 text-sm">
+                <p>&copy; Relatório de Performance de Tráfego Pago - Samuel Mendes | Dados analisados em 1º de Outubro de 2025.</p>
+            </footer>
+
+        </div>
+    </div>
+
+    <script>
+        // Dados extraídos das tabelas
+        const labels = ['Junho', 'Julho', 'Agosto', 'Setembro'];
+        const conversasIniciadas = [1109, 1810, 2604, 2167];
+        const custoPorConversa = [4.07, 2.58, 2.40, 2.71];
+        const investimentoTotal = [4516.74, 4663.74, 6096.75, 5820.08];
+
+        // Cores (em hex, copiadas do config do Tailwind)
+        const primaryColor = '#1A4F38'; // Verde Escuro
+        const accentColor = '#00C853'; // Verde Vibrante
+        const textColor = '#212529'; // Texto
+
+        // --- Gráfico 1: Conversas Iniciadas (Barra) ---
+        const ctxConversas = document.getElementById('chartConversas').getContext('2d');
+        new Chart(ctxConversas, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Conversas Iniciadas (WhatsApp)',
+                    data: conversasIniciadas,
+                    backgroundColor: accentColor,
+                    borderColor: accentColor,
+                    borderWidth: 1,
+                    borderRadius: 5,
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            color: textColor
+                        }
+                    },
+                    title: {
+                        display: false,
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.parsed.y.toLocaleString('pt-BR');
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Volume de Leads',
+                            color: textColor
+                        },
+                        ticks: {
+                            color: textColor
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: textColor
+                        }
+                    }
+                }
+            }
+        });
+
+
+        // --- Gráfico 2: Otimização de Custo (Linha/Barra Combinado) ---
+        const ctxCustos = document.getElementById('chartCustos').getContext('2d');
+        new Chart(ctxCustos, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        // Barras para Investimento Total (Eixo Y1)
+                        label: 'Investimento Total (R$)',
+                        data: investimentoTotal,
+                        backgroundColor: primaryColor + 'B0', // primary com transparência
+                        borderColor: primaryColor,
+                        borderWidth: 1,
+                        yAxisID: 'y1', // Liga ao eixo da esquerda
+                        borderRadius: 5,
+                    },
+                    {
+                        // Linha para Custo por Conversa (Eixo Y2)
+                        label: 'CPL (R$ por Conversa)',
+                        data: custoPorConversa,
+                        type: 'line', // Define este dataset como linha
+                        borderColor: accentColor,
+                        backgroundColor: accentColor,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        yAxisID: 'y2', // Liga ao eixo da direita
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            color: textColor
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    if (context.dataset.yAxisID === 'y2') {
+                                        // Formata CPL
+                                        label += 'R$ ' + context.parsed.y.toFixed(2).replace('.', ',');
+                                    } else {
+                                        // Formata Investimento
+                                        label += 'R$ ' + context.parsed.y.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+                                    }
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        title: {
+                            display: true,
+                            text: 'Investimento Total (R$)',
+                            color: primaryColor
+                        },
+                        grid: {
+                            drawOnChartArea: true,
+                            color: '#e5e7eb' // Cor da linha de grade
+                        },
+                        ticks: {
+                            color: textColor
+                        }
+                    },
+                    y2: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right', // Posiciona no lado direito
+                        title: {
+                            display: true,
+                            text: 'Custo por Conversa (R$)',
+                            color: accentColor
+                        },
+                        grid: {
+                            drawOnChartArea: false,
+                        },
+                        ticks: {
+                            color: textColor,
+                            callback: function(value, index, ticks) {
+                                return 'R$ ' + value.toFixed(2).replace('.', ',');
+                            }
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: textColor
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
